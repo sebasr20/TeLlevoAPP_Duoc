@@ -1,0 +1,29 @@
+<app-encabezado tituloPagina="Recuperar Contraseña"></app-encabezado>
+
+<ion-content padding>
+  <div class="animalogo">
+    <img src="../../assets/images/logo.png" alt="">
+  </div>
+  
+  <ion-text>
+    <p>
+      Ingresa tu dirección de correo para enviarte los pasos que debes seguir para restaurar tu contraseña
+    </p>
+  </ion-text>
+  <ion-card>
+    <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" name="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            required></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button type="submit" color="primary" expand="block" [routerLink]="['/restaurar']">Recuperar
+      </ion-button>
+    </form>
+  </ion-card>
+
+
+</ion-content>
