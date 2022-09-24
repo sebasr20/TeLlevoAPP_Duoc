@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController, NavParams } from '@ionic/angular';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-bienvenida',
@@ -9,13 +8,18 @@ import { NavController, NavParams } from '@ionic/angular';
 })
 export class BienvenidaPage implements OnInit {
   
-  datos: any;
+  nombreUsuario: string;
   constructor(
-    public route:ActivatedRoute) { 
-      this.datos = JSON.parse(this.route.snapshot.paramMap.get('Object'));
-    }
+    private ds: DataService)
+    {}
 
   ngOnInit() {
+    this.ds.disparador.subscribe(info=>{
+      console.log(info)
+      this.nombreUsuario=info 
+      console.log(this.nombreUsuario)
+    })
+    
   }
 
 

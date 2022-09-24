@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { NavController } from '@ionic/angular';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +7,18 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public email: string;
-  public password: string; 
 
-  
+  usuario ={
+    email:'',
+    password:''
+
+  }
   constructor(
-    private nav: NavController
+    private ds: DataService
   ) { }
 
-  irABienvenida() {
-    let d={ 
-      'email': this.email,
-    }
-
-    let humanStringify = JSON.stringify(d);
-    this.nav.navigateForward('bienvenida/'+humanStringify);
+  irABienvenida(){
+    this.ds.disparador.emit(this.usuario.email)
   }
 
   ngOnInit() {
